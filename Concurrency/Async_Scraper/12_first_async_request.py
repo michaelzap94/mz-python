@@ -33,5 +33,8 @@ multiple_requests = [fetch_page('http://google.com') for i in range(50)]
 start = time.time()
 # run_until_complete([ONE COROUTINE]) -> so you can gather multiple using .gather(t1,t2,t3,t4,...)
 # loop.run_until_complete() -> resumes the Coroutines till complete
-loop.run_until_complete(asyncio.gather(*multiple_requests))
+# asyncio.gather(*multiple_requests) -> gather all fetch_page(), and only return when all tasks have finished
+result = loop.run_until_complete(asyncio.gather(*multiple_requests))
 print(f'multiple_requests took {time.time() - start}')
+
+print(result)
