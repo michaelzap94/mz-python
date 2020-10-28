@@ -69,6 +69,7 @@ def main():
     # loop.run_until_complete() -> resumes the Coroutines till complete
     # Run the event loop until a Future is done. Return the Future's result, or raise its exception.
     pages_fast = loop.run_until_complete(get_multiple_pages_efficient_FAST(loop, urls))
+    # pages_fast -> whatever get_multiple_pages_efficient_FAST() returned
     print(f'FAST took {time.time() - start}') # 0.6
 
     # ----------------------------------------------------------------------------------
