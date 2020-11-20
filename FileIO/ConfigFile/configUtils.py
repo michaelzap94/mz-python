@@ -41,6 +41,16 @@ def get_setting(path, section, setting):
     value = config.get(section, setting)
     return value
 
+# It may not make any sense, but it exists
+def get_setting_interpolation(path, section, setting, some_dict):
+    """
+    Get a setting using interpolation: change values of properties
+    on the fly.
+    """
+    config = get_config(path)
+    value = config.get(section, setting, vars = some_dict)
+    return value
+
 def set_or_update_setting(path, section, setting, value):
     """
     Update a setting
@@ -67,6 +77,8 @@ if __name__ == "__main__":
 
     font = get_setting(PATH, 'Settings', 'font')
     font_size = get_setting(PATH, 'Settings', 'font_size')
+
+    print(get_setting_interpolation(PATH, 'Settings', 'font', {"font": "Arial", "font_size": "100"})) # arial
 
     set_or_update_setting(PATH, "Settings", "font_size", "12")
     font_size = get_setting(PATH, 'Settings', 'font_size')
