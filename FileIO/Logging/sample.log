@@ -1,0 +1,16 @@
+INFO:root:Informational message
+WARNING:root:Warning message
+ERROR:root:An error has happened!
+ERROR:ex:Error!
+Traceback (most recent call last):
+  File "/Users/michael/Personal/mz-python/FileIO/Logging/basic.py", line 22, in <module>
+    raise RuntimeError
+RuntimeError
+INFO:root:Informational message
+WARNING:root:Warning message
+ERROR:root:An error has happened!
+ERROR:ex:Error!
+Traceback (most recent call last):
+  File "/Users/michael/Personal/mz-python/FileIO/Logging/basic.py", line 22, in <module>
+    raise RuntimeError
+RuntimeError
