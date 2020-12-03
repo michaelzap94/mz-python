@@ -6,7 +6,9 @@ RETAILERS = {
     "AO": None,
     "VERY": None,
     "ARGOS": None,
-    "STUDIO": None,
+    "STUDIO": {
+        "url": "https://www.studio.co.uk/shop/gaming-playstation/playstation-pre-orders/ps5-digital-edition-console"
+    },
     "SMYTHS": None,
     "HUGHES": None,
     "JOHN_LEWIS": None

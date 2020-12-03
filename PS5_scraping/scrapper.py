@@ -12,18 +12,27 @@ async def amazon_scrapper(response):
     text = outter.get_text().strip()
     return False if ("unavailable" in text) else True
 
+async def studio_scrapper(response):
+    htmlDATA = await response.content.read()
+    soup = BeautifulSoup(htmlDATA, "html.parser")
+    availabilityDiv = soup.find(class_="egl_now product-details__price-now")
+    outter = availabilityDiv.find("span")
+    text = outter.get_text().strip()
+    return False if ("unavailable" in text.lower()) else True
+
 scrapper_functions = {
     "AMAZON": amazon_scrapper,
     "CURRYS": None,
     "AO": None,
     "VERY": None,
     "ARGOS": None,
-    "STUDIO": None,
+    "STUDIO": studio_scrapper,
     "SMYTHS": None,
     "HUGHES": None,
     "JOHN_LEWIS": None
 }
 
 async def getAvailability(source, response):
+    print(f"scrapping: {source}")
     return await scrapper_functions[source](response)
 
