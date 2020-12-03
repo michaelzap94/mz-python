@@ -1,0 +1,4 @@
+url,rawContent
+http://example.com,b'<!doctype '
+http://google.com,b'<!doctype '
+http://tecladocode.com/blog,b'<!DOCTYPE '
