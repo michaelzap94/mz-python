@@ -15,13 +15,16 @@ headers={"User-Agent": "Requests"}
 
 async def fetch_page(session, source, url):
     if(url is None):
-        return (source, None, None, datetime.today().isoformat()) 
+        return (None, None, datetime.today().isoformat()) 
     # async_timeout is a function that will terminate/raise exeption if request takes too long
     # in this case 30 seconds
     async with async_timeout.timeout(30):
         async with session.get(url) as response:
-            availability = await getAvailability(source, response)
-            return (source, response.status, availability, datetime.today().isoformat()) 
+            try:
+                availability = await getAvailability(source, response)
+                return (response.status, availability, datetime.today().isoformat()) 
+            except Exception as e:
+                return (response.status, None, datetime.today().isoformat()) 
 
 #-------------------------------------------------------------------------------
 async def get_multiple_pages_efficient_FAST(loop, sources):
