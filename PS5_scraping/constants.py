@@ -9,7 +9,9 @@ RETAILERS = {
     "STUDIO": {
         "url": "https://www.studio.co.uk/shop/gaming-playstation/playstation-pre-orders/ps5-digital-edition-console"
     },
-    "SMYTHS": None,
+    "SMYTHS": {
+        "url": "https://www.smythstoys.com/uk/en-gb/video-games-and-tablets/playstation-5/playstation-5-consoles/playstation-5-digital-edition-console/p/191430"
+    },
     "HUGHES": None,
     "JOHN_LEWIS": None
 }
