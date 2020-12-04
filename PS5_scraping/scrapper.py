@@ -71,7 +71,6 @@ scrapper_functions = {
 }
 
 async def getAvailability(source, html_response):
-    print(f"scrapping: {source}")
     html = await html_response.content.read()
     # if(source == "ARGOS"):
     #     print(html)

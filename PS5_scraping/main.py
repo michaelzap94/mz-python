@@ -36,7 +36,7 @@ async def get_multiple_pages_efficient_FAST(loop, sources):
         return await asyncio.gather(*list_of_futures)
 # ----------------------------------------------------------------------------------
 
-def main():
+def main(loop):
     start = time.time()
 
     sources = []
@@ -46,14 +46,18 @@ def main():
             sources.append((key, metadata["url"]))
         else:
             sources.append((key, None))
-
-    loop = asyncio.get_event_loop()
+    
     results = loop.run_until_complete(get_multiple_pages_efficient_FAST(loop, sources))
     # ----------------------------------------------------------------------------------
     make_history(results)
 
-    print(f'FAST took {time.time() - start}') # 0.6
+    return results
 
 if __name__ == '__main__':
-    main()
+    try:
+        loop = asyncio.get_event_loop()
+    except Exception as e:
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+    main(loop)
 
