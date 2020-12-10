@@ -1,12 +1,15 @@
 import flask
 import logging
 import asyncio
+import os
 from flask import request, jsonify
 from main import main
 from constants import RETAILERS
 
+PORT = int(os.environ.get("PORT", 5000))
+
 app = flask.Flask(__name__)
-app.config["DEBUG"] = True
+# app.config["DEBUG"] = True
 
 try:
     loop = asyncio.get_event_loop()
@@ -24,4 +27,6 @@ def api_all():
     data = dict(data_zip)
     return jsonify(data)
 
-app.run()
+
+if __name__ == '__main__':
+    app.run(debug=True,host='0.0.0.0',port=PORT)
